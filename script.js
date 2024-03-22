@@ -5,27 +5,23 @@ window.addEventListener("load", function () {
     elemekElerese4();
     elemekFormazasa1();
     esemenyKezeles1();
+    esemenyKezeles2();
+  
 });
 
 function elemekElerese1() {
-    const BEKIIR = document.querySelectorAll("section h2")[0]
-    let tartalom = document.getElementById("f1").innerHTML
+    let tartalom = $("#f1").html()
     console.log(tartalom)
 }
 function elemekElerese2() {
-    const ELEM = document.getElementById("ide")
-    ELEM.innerHTML = `
-    <p>Jó reggelt!</p>
-    `
+$("#ide").html("<p>Jó reggelt!</p>")
 }
 function elemekElerese3() {
-    const ELEMCLASS = document.getElementsByClassName("ide")[0]
-    ELEMCLASS.innerHTML = `
-    <p>Jó reggelt</p>
-    `
+    $(".ide").html("<p>Jó reggelt</p>")
+
 }
 function elemekElerese4(){
-    const ELEMLISTA = document.getElementsByClassName("lista")[0]
+    
     let szoveg = ""
     for (let index = 0; index < 5; index++) {
         let generaltSzam = Math.floor(Math.random()*20)+10
@@ -36,15 +32,37 @@ function elemekElerese4(){
         `
     }
     szoveg += `<button id="gomb">Átmásol</button>`
-    ELEMLISTA.innerHTML += szoveg
+    $(".lista").html(szoveg)
 }
 function elemekFormazasa1(){
-    const MEGFOG = document.getElementsByClassName("lista")[0]
-    MEGFOG.classList.add("formazott")
+    const MEGFOG = $(".lista").addClass("formazott")
+
 }
 
 function esemenyKezeles1(){
-    const GOMBMEG = document.querySelectorAll("#lista gomb")
-    GOMBMEG[i].addEventListener("click", elemekElerese4)
+    const TART=$(".lista ")
+    const IDE=$(".lista button")
+    IDE.on("click", function(){
+        $(".kattintasutan").html(TART.html())
+    })
+    
 
+}
+
+function esemenyKezeles2(){
+    const ELEM=$(".feladat")
+    ELEM.html("<button>OK</button>")
+    const GOMB=$(".feladat button")
+    GOMB.on("click", function(){
+        $(".feladat").html("<div id='kep'><img src='kutya.jpg'></div>")
+        esemenyKezeles3();
+    })
+}
+
+function esemenyKezeles3(){
+    const KEP=$("#kep img")
+    KEP.on("mouseenter", function(event){
+        console.log("valami")
+        $(event.target).css("width","100px")
+    })
 }
