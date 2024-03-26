@@ -6,7 +6,8 @@ window.addEventListener("load", function () {
     elemekFormazasa1();
     esemenyKezeles1();
     esemenyKezeles2();
-  
+    esemenyKezeles4();
+    sajatFeladat1();
 });
 
 function elemekElerese1() {
@@ -63,6 +64,31 @@ function esemenyKezeles3(){
     const KEP=$("#kep img")
     KEP.on("mouseenter", function(event){
         console.log("valami")
-        $(event.target).css("width","100px")
+        $(event.target).css("width","400px")
+        
+    })
+    KEP.on("mouseleave", function(event){
+        $(event.target).css("width","100%")
+    })
+}
+
+
+function esemenyKezeles4(){
+    const ELEM=$(".tarolo")
+    const IDE=$(".megjelenito")
+    for (let index = 0; index < ELEM.length; index++) {
+        ELEM.on("click", function(event){
+            console.log("helo")
+            IDE.html(event.target)
+        })
+        
+    }
+    
+}
+
+function sajatFeladat1(){
+    const HATTER=$(".sajatdivem button")
+    HATTER.on("click", function(){
+        $(".sajatdivem").css("background-color", "red")
     })
 }
